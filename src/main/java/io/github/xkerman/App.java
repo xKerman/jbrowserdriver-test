@@ -3,12 +3,20 @@
  */
 package io.github.xkerman;
 
-public class App {
-    public String getGreeting() {
-        return "Hello world.";
-    }
+import com.machinepublishers.jbrowserdriver.JBrowserDriver;
+import com.machinepublishers.jbrowserdriver.Settings;
 
+
+public class App {
     public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
+        if (args.length < 1) {
+            return;
+        }
+        String url = args[0];
+        Settings settings = Settings.builder().headless(false).logJavascript(true).build();
+        JBrowserDriver driver = new JBrowserDriver(settings);
+        driver.get(url);
+        System.out.println(driver.getStatusCode());
+        System.out.println(System.getSecurityManager());
     }
 }
