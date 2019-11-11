@@ -16,7 +16,5 @@ public class App {
         Settings settings = Settings.builder().headless(false).logJavascript(true).build();
         JBrowserDriver driver = new JBrowserDriver(settings);
         driver.get(url);
-        System.out.println(driver.getStatusCode());
-        System.out.println(System.getSecurityManager());
     }
 }
